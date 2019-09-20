@@ -1,0 +1,11 @@
+{
+  "dev": [
+    "'mongodb://localhost:27017/test'",
+
+    {
+      "useCreateIndex": true,
+      "useNewUrlParser": true,
+      "useFindAndModify": false
+    }
+  ]
+}
