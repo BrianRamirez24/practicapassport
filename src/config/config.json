@@ -1,10 +1,12 @@
 {
   "dev": [
-    "'mongodb://localhost:27017/test'",
+    "'mongodb://localhost:27017/passport-jwt'",
 
     {
       "useNewUrlParser": true,
-      "useUnifiedTopology": true
+      "useUnifiedTopology": true,
+      "useCreateIndex": true,
+      "useFindAndModify": false
     }
   ]
 }

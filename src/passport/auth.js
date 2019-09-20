@@ -1,6 +1,26 @@
 const passport = require("passport");
 const localStrategy = require("passport-local").Strategy;
-const userName = requie("../model/user");
+const JWTstrategy = require("passport-jwt").Strategy;
+const ExtractJWT = require("passport-jwt").ExtractJWT;
+
+const userName = require("../model/user");
+
+passport.use(
+  new JWTstrategy(
+    {
+      secretOrKey: "top-secret",
+      jwtFromRequest: this.ExtractJWT.fromUrlQueryParameters("secret_token")
+    },
+    async (token, done) => {
+      try {
+        return done(null, token.user);
+      } catch (error) {
+        done(error);
+      }
+    }
+  )
+);
+
 passport.use(
   "signup",
   new localStrategy(
@@ -34,7 +54,7 @@ passport.use(
         if (!user) {
           return done(null, false, { message: "user not found" });
         }
-        const validate = await userName.isValidated(password);
+        const validate = await user.isValidated(password);
         if (!validate) {
           return done(null, false, { message: "incorrect password" });
         }
