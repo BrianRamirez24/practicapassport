@@ -5,7 +5,7 @@ const morgan = require("morgan");
 const passport = require("passport");
 const mongoose = require("mongoose");
 const bparser = require("body-parser");
-
+require("./connection/db");
 //inits
 
 const app = express();
